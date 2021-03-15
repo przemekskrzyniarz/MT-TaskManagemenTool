@@ -1,0 +1,23 @@
+.navigationItem {
+  width: 100%;
+
+  & > * {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-family: $font-display;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    padding: 1.6rem;
+    display: inline;
+    color: currentColor;
+    transition: all 0.2s;
+    &.active,
+    &:hover,
+    &:active {
+      background-color: rgba(144, 144, 144, 0.2);
+      transform: translateY(-3px);
+    }
+
+  }
+}
