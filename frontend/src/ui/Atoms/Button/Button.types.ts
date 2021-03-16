@@ -4,4 +4,5 @@ export interface BaseProps {
   children?: ReactNode;
   invert?: boolean;
   className?: string;
+  onClick?: () => void;
 }

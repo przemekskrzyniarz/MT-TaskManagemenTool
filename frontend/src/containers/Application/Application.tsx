@@ -17,7 +17,6 @@ const Application: React.FC = () => (
           <React.Fragment>
             <Helmet titleTemplate="%s — Managment Tool" defaultTitle="Managment Tool" />
             <Layout/>
-            <hr />
             <Routes />
           </React.Fragment>
         </Router>
