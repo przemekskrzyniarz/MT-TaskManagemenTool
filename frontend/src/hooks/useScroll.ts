@@ -30,6 +30,7 @@ export function useScroll() {
     return () => {
       window.removeEventListener("scroll", attach);
     };
+    // eslint-disable-next-line
   }, [null]);
 
   return {

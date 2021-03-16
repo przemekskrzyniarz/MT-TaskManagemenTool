@@ -1,7 +1,7 @@
 import { CombinedState } from "redux";
 
-import { DemoReducerReducer } from "../redux/demoReducer/typings";
+import { AuthReducer } from "../redux/authReducer/typings";
 
 export type Reducers = CombinedState<{
-  demoReducer: DemoReducerReducer;
+  authReducer: AuthReducer;
 }>;

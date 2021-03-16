@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { NavigationItems } from "./../../Molecules";
-import { NavigationItem } from "./../../Atoms";
 
 import { ROUTES } from "../../../config/routes";
 import { NavLink } from "react-router-dom";
@@ -16,19 +15,8 @@ const PageHeader = (props: Props) => {
   const items = [
     {
       children: "Login",
-      href: `${ROUTES.HOME}`,
-    },
-    {
-      children: "Register",
-      href: `${ROUTES.ABOUT}`,
-    },
-  ];
-
-  const item = [
-    {
-      children: "",
-      href: `${ROUTES.HOME}`,
-    },
+      href: `${ROUTES.AUTH}`,
+    }
   ];
 
   return (

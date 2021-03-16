@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-import { Reducers } from "./../../redux/typings";
+import { Reducers } from "../typings";
 
 const exampleSelectorFunction = (state: Reducers) => {
   return state;

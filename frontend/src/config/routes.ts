@@ -2,11 +2,11 @@ import loadable from "@loadable/component";
 import { RouteProps } from "react-router-dom";
 
 const Home = loadable(() => import("../pages/Home"));
-const About = loadable(() => import("../pages/About"));
+const Auth = loadable(() => import("../pages/Auth"));
 
 export enum ROUTES {
   HOME = "/",
-  ABOUT = "/about",
+  AUTH = "/auth",
 }
 
 export const index: RouteProps = {
@@ -15,7 +15,7 @@ export const index: RouteProps = {
   component: Home,
 };
 
-export const about: RouteProps = {
-  path: ROUTES.ABOUT,
-  component: About,
+export const auth: RouteProps = {
+  path: ROUTES.AUTH,
+  component: Auth,
 };

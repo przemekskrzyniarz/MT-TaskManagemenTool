@@ -1,0 +1,35 @@
+.Home {
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 6rem);
+  background-image: url(../../images/Home2-100.jpg);
+  opacity: .85;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    margin: 0 10rem;
+    grid-column-gap: 10rem;
+    transform: skewX(-12deg);
+  }
+
+  &__text {
+    background-color: rgba(255, 255, 255, .8);
+    align-self: center;
+    
+    & > * {
+      font-size: 2rem;
+      font-family: "Josefin Sans", sans-serif;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding: 2rem;
+      color: currentColor;
+      transform: skewX(12deg);
+    }
+  }
+}
