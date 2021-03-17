@@ -7,10 +7,9 @@ import { Reducers } from "../redux/typings";
 
 const composeEnhancers = composeWithDevTools({ trace: true });
 
-export const makeStore = (initialStore = {}): Store<Reducers> => {
+export const makeStore = (): Store<Reducers> => {
   return createStore(
     reducers,
-    initialStore,
     composeEnhancers(applyMiddleware(thunk)),
   );
 };

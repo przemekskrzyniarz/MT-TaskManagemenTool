@@ -2,8 +2,11 @@ import * as React from "react";
 
 import { NavigationItems } from "./../../Molecules";
 
+import { getToken } from "../../../redux/authReducer/selectors";
+
 import { ROUTES } from "../../../config/routes";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export interface Props {
   className?: string;
@@ -12,12 +15,24 @@ export interface Props {
 }
 
 const PageHeader = (props: Props) => {
-  const items = [
-    {
-      children: "Login",
-      href: `${ROUTES.AUTH}`,
-    }
-  ];
+  const token = useSelector(getToken);
+  console.log(token);
+  let items;
+  if (token === "") {
+    items = [
+      {
+        children: "Login",
+        href: `${ROUTES.AUTH}`,
+      },
+    ];
+  } else {
+    items = [
+      {
+        children: "Logout",
+        href: `${ROUTES.LOGOUT}`,
+      },
+    ];
+  }
 
   return (
     <header
@@ -27,7 +42,12 @@ const PageHeader = (props: Props) => {
         props.className,
       ].join(" ")}
     >
-      <NavLink className="pageHeader__logo" to={ROUTES.HOME} exact={true} activeClassName="active"></NavLink>
+      <NavLink
+        className="pageHeader__logo"
+        to={ROUTES.HOME}
+        exact={true}
+        activeClassName="active"
+      ></NavLink>
       <NavigationItems items={items} />
     </header>
   );

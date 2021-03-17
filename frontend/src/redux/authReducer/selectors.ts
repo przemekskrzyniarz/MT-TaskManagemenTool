@@ -1,12 +1,5 @@
-import { createSelector } from "reselect";
-
 import { Reducers } from "../typings";
 
-const exampleSelectorFunction = (state: Reducers) => {
-  return state;
-};
+const getToken = (auth: Reducers) => auth.authReducer.token;
 
-export const exampleSelector = createSelector(
-  exampleSelectorFunction,
-  (f) => f,
-);
+export { getToken };

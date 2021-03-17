@@ -3,10 +3,12 @@ import { RouteProps } from "react-router-dom";
 
 const Home = loadable(() => import("../pages/Home"));
 const Auth = loadable(() => import("../pages/Auth"));
+const Logout = loadable(() => import("../pages/Logout"));
 
 export enum ROUTES {
   HOME = "/",
   AUTH = "/auth",
+  LOGOUT = "/logout",
 }
 
 export const index: RouteProps = {
@@ -18,4 +20,9 @@ export const index: RouteProps = {
 export const auth: RouteProps = {
   path: ROUTES.AUTH,
   component: Auth,
+};
+
+export const logout: RouteProps = {
+  path: ROUTES.LOGOUT,
+  component: Logout,
 };

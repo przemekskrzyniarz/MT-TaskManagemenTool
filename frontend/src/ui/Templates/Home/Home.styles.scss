@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     margin: 0 10rem;
-    grid-column-gap: 10rem;
+    grid-gap: 10rem;
     transform: skewX(-12deg);
   }
 

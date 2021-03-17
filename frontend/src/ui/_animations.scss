@@ -1,0 +1,27 @@
+@keyframes hideX {
+  0% {
+    transform: rotateX(270deg);
+  }
+
+  1% {
+    transform: rotateX(270deg);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes hideY {
+  0% {
+    transform: rotateY(270deg);
+  }
+
+  1% {
+    transform: rotateY(270deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}

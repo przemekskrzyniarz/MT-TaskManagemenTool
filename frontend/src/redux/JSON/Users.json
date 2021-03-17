@@ -1,0 +1,106 @@
+[{
+  "_id": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "participant": [
+    {
+      "$oid": "5f3d1011baa3ad1e94584aa9"
+    },
+    {
+      "$oid": "5f48d003a742f30b2cc63671"
+    },
+    {
+      "$oid": "5f48d1d013ebc420a4a07050"
+    },
+    {
+      "$oid": "5f48d2ac13ebc420a4a07051"
+    }
+  ],
+  "email": "Przemek.sk@o2.pl",
+  "password": "$2a$12$tAXp0Vsols5wq37/cJVgzOjzN0avb.exuB6mc.UrjoiGO.RJR4Ahm",
+  "__v": 45
+},{
+  "_id": {
+    "$oid": "5ece469aeb53961818f9dd47"
+  },
+  "participant": [
+    {
+      "$oid": "5f3d1011baa3ad1e94584aa9"
+    }
+  ],
+  "email": "Przemek.sk@interia.eu",
+  "password": "$2a$12$BbfgC7FBENZC5KbS2OWjLOHE15iqNHH6U5QLO4kOLfQRrMhjAsjFG",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "5f48f22c4720f828f0b0c84b"
+  },
+  "participant": [],
+  "email": "Przemek.sk@gmail.com",
+  "password": "$2a$12$qqQ1L4bllUd9TN0KH0HHCO6CL/8lBWEkidPzaeuphnF9zl8bjdW8O",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48f2344720f828f0b0c84c"
+  },
+  "participant": [
+    {
+      "$oid": "5f3d1011baa3ad1e94584aa9"
+    }
+  ],
+  "email": "Przemek.sk@wp.pl",
+  "password": "$2a$12$fxTIgy66/Moh1hfdZuXIP.HAhkte2LufNt4GFrj1b93N6Ab9pupjK",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48f2414720f828f0b0c84d"
+  },
+  "participant": [
+    {
+      "$oid": "5f3d1011baa3ad1e94584aa9"
+    }
+  ],
+  "email": "Przemek.sk@onet.pl",
+  "password": "$2a$12$Wn5YinRkscDQ6nJHgxKWEu2sYK6BbxL2nRzG8UDUCLLCad7z9Xv5e",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f491ee82b721714803ed056"
+  },
+  "participant": [],
+  "email": "dominika.klimek1357@interia.pl",
+  "password": "$2a$12$F4ARgfj5nd8ngW0NMReL4e1XhbuTMMikizB4lxMxSKuZF.wPtC4pq",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "5f5f2cc21408252c64e080b6"
+  },
+  "participant": [],
+  "email": "przemek.sk@wp.pl",
+  "password": "$2a$12$ihIbMEWTv4HmB.9pTOQrfei/3CnCcdVs1p3aQchsLZTnCSHUjvVXO",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "5f61b7427fb6223954fab123"
+  },
+  "participant": [],
+  "email": "przemyslaw.sk@wp.pl",
+  "password": "$2a$12$0o8fqzLr1RUb4/4QBeIBvuLrV/.ifgbQbhJQ0LLxEsHYntS6/ptqO",
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "601db2100457293ce8c4b486"
+  },
+  "participant": [],
+  "email": "przemek.sk@interia.eu",
+  "password": "$2a$12$lhHMu2ZQztUk03Ix5QpxEO054VlhDckH8zpr.gwk5xVktE2b9rmM2",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "601db2180457293ce8c4b487"
+  },
+  "participant": [],
+  "email": "przemek.sk@o2.pl",
+  "password": "$2a$12$GlOb/TyxGomF8WDafDPgfuJ4h.ViSItOZ5mDzJgzrM6oBs82tZf6y",
+  "__v": 0
+}]

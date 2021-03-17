@@ -6,4 +6,6 @@ export interface BaseProps {
   className?: string;
   text?: string;
   type?: string;
+  value?: string;
+  onChange?: (event: any) => void;
 }

@@ -1,8 +1,5 @@
 .Form {
   display:grid;
-  .Label:not(:last-child) {
-    margin-bottom: 2rem;
-  }
 
   .Input:first-child {
     margin-top: 2rem;
@@ -13,6 +10,4 @@
     visibility: hidden;
     transform: translateY(-4rem);
   }
-
-
 }
