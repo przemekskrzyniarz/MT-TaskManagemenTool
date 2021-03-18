@@ -3,6 +3,8 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 
 import { Form, Input, Label, Button } from "../../ui/Atoms";
+import { Modal } from "../../ui/Molecules";
+
 import { ViewProps } from "./Auth.typings";
 
 const View: React.FunctionComponent<ViewProps> = ({
@@ -20,18 +22,17 @@ const View: React.FunctionComponent<ViewProps> = ({
     <React.Fragment>
       <Helmet title="Auth" />
       <div className="Auth">
-        <div
+        <Modal
           className={[
-            "Auth__content",
-            isLogin ? "Auth__content--active" : "Auth__content--inactive",
+            isLogin ? "Modal--visibilityX" : "Modal--visibilityY",
           ].join(" ")}
         >
           <div className="Auth__button-box">
             <Button
               onClick={onChangeAuth}
               className={[
-                "Button--auth",
-                isLogin ? "" : "Button--auth--inactive",
+                "Button__auth",
+                isLogin ? "" : "Button__auth--inactive",
               ].join(" ")}
             >
               Sign in
@@ -39,14 +40,13 @@ const View: React.FunctionComponent<ViewProps> = ({
             <Button
               onClick={onChangeAuth}
               className={[
-                "Button--auth",
-                isLogin ? "Button--auth--inactive" : "",
+                "Button__auth",
+                isLogin ? "Button__auth--inactive" : "",
               ].join(" ")}
             >
               Sign up
             </Button>
           </div>
-          <div className="Auth__form-box">
             <Form onSubmit={submitHandler}>
               <Input type="text" text="Email" onChange={onChangeEmail} value={email}></Input>
               <Label text="Email"></Label>
@@ -75,8 +75,7 @@ const View: React.FunctionComponent<ViewProps> = ({
                 </span>
               </Button>
             </Form>
-          </div>
-        </div>
+        </Modal>
       </div>
     </React.Fragment>
   );

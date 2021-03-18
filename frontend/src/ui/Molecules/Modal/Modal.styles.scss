@@ -1,0 +1,40 @@
+%transition{
+    transition: all .1s .9s;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.Modal {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2rem;
+  font-size: 2rem;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 3rem;
+  margin: 2rem;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: minmax(25.5rem, 40rem);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-56.4%, -50%);
+
+  &--visibilityY {
+    animation: visibilityY 1s cubic-bezier(1, 0, 0, 1);
+  }
+  &--visibilityX {
+    animation: visibilityX 1s cubic-bezier(1, 0, 0, 1);
+  }
+  &--hideY {
+    animation: hideY 1s cubic-bezier(1, 0, 0, 1);
+    @extend %transition;
+  }
+  &--hideX {
+    animation: hideX 1s cubic-bezier(1, 0, 0, 1);
+    @extend %transition;
+  }
+}

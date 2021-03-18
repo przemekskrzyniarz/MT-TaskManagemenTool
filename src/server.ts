@@ -1,28 +1,16 @@
-import bodyParser from "body-parser";
-import express from "express";
-import path from "path";
-import { postMessages, putMessage } from "./routes/messages";
-import { getUser } from "./routes/users";
+// Require the fastify framework and instantiate it
+import fastify from "fastify";
 
-const app = express();
-const port = process.env.PORT || 5000;
+const server = fastify({ logger: true });
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname , '../frontend', 'build')));
+// Require external modules
+import { connect } from "mongoose";
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Connect to DB
+connect(
+  "mongodb+srv://TheDycker:nSelmRNedh3DDKCJ@cluster0-adnzn.mongodb.net/Master-Thesis?retryWrites=true&w=majority"
+)
+  .then(() => console.log("MongoDB connected..."))
+  .catch((err) => console.log(err));
 
-// use
-app.get("/api/users/:id", getUser);
-
-// messages
-app.post("/api/messages", postMessages);
-app.put("/api/messages/:id", putMessage);
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname , '../frontend', 'build/index.html'));
-});
-
-// tslint:disable-next-line:no-console
-app.listen(port, () => console.log(`Listening on port ${port}`));
+export default server;
