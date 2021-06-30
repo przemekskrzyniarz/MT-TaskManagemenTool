@@ -1,9 +1,20 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { BaseProps as Props } from "./Button.types";
+import {BaseProps as Props} from './Button.types'
 
-const Button: React.FunctionComponent<Props> = (props) => (
-  <button onClick={props.onClick} className={["Button", props.className].join(" ")}>{props.children}</button>
-);
+const Button: React.FunctionComponent<Props> = ({
+  children,
+  className,
+  disabled = false,
+  onClick,
+}) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    className={['Button', className].join(' ')}
+  >
+    {children}
+  </button>
+)
 
-export { Button };
+export {Button}

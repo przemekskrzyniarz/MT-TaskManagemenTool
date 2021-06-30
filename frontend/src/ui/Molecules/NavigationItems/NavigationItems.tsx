@@ -1,13 +1,12 @@
-import React from "react";
-import { NavigationItem } from "../../Atoms";
-const NavigationItems = (props: any) => (
-    <ul className="navigationItems">
-      <React.Fragment>
-      {props.items.map((item: any) => (
-      <NavigationItem {...item} key={String(item.children).toLowerCase()} />
-       ))}
-      </React.Fragment>
-    </ul>
-);
+import React from 'react'
+import {NavigationItem} from '../../Atoms'
 
-export { NavigationItems };
+const NavigationItems = (props: any) => (
+  <ul className="navigationItems">
+    {props.items.map((item: any) => (
+      <NavigationItem {...item} key={String(item.children).toLowerCase()} />
+    ))}
+  </ul>
+)
+
+export {NavigationItems}

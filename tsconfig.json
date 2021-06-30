@@ -7,5 +7,5 @@
     "noUnusedLocals": false,
     "outDir": "dist"
   },
-  "include": ["src/routes/**/*", "src/server.ts"]
+  "include": ["src/**/*", "src/index.ts"]
 }

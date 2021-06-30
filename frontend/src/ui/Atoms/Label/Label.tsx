@@ -1,9 +1,11 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { BaseProps as Props } from "./Label.types";
+import {BaseProps as Props} from './Label.types'
 
-const Label: React.FunctionComponent<Props> = (props) => (
-  <label htmlFor={props.text} className={["Label", props.className].join(" ")}>{props.text}</label>
-);
+const Label: React.FunctionComponent<Props> = ({text, className}) => (
+  <label htmlFor={text} className={['Label', className].join(' ')}>
+    {text}
+  </label>
+)
 
-export { Label };
+export {Label}

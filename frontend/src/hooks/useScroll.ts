@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 export enum SCROLL_DIRECTION {
   BOTTOM,
@@ -6,35 +6,34 @@ export enum SCROLL_DIRECTION {
 }
 
 export function useScroll() {
-  const [scrollFromTop, setScrollFromTop] = React.useState(0);
-  const [scrollDirection, setScrollDirection] = React.useState<
-    SCROLL_DIRECTION
-  >(SCROLL_DIRECTION.BOTTOM);
-  let scrollTop = 0;
+  const [scrollFromTop, setScrollFromTop] = React.useState(0)
+  const [scrollDirection, setScrollDirection] =
+    React.useState<SCROLL_DIRECTION>(SCROLL_DIRECTION.BOTTOM)
+  let scrollTop = 0
 
   function attach() {
-    const { pageYOffset } = window;
+    const {pageYOffset} = window
 
     setScrollDirection(
       pageYOffset > scrollTop ? SCROLL_DIRECTION.BOTTOM : SCROLL_DIRECTION.TOP,
-    );
-    setScrollFromTop(pageYOffset);
-    sessionStorage.setItem("scrollOffset", String(pageYOffset));
+    )
+    setScrollFromTop(pageYOffset)
+    sessionStorage.setItem('scrollOffset', String(pageYOffset))
 
-    scrollTop = pageYOffset;
+    scrollTop = pageYOffset
   }
 
   React.useEffect(() => {
-    window.addEventListener("scroll", attach, false);
+    window.addEventListener('scroll', attach, false)
 
     return () => {
-      window.removeEventListener("scroll", attach);
-    };
+      window.removeEventListener('scroll', attach)
+    }
     // eslint-disable-next-line
-  }, [null]);
+  }, [null])
 
   return {
     scrollFromTop,
     scrollDirection,
-  };
+  }
 }
