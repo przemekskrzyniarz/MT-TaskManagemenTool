@@ -1,14 +1,14 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { Helmet } from "react-helmet";
+import {Helmet} from 'react-helmet'
 
-import { Form, Input, Label, Button } from "../../ui/Atoms";
-import { Modal } from "../../ui/Molecules";
+import {Form, Input, Label, Button} from '../../ui/Atoms'
+import {Modal} from '../../ui/Molecules'
 
-import { ViewProps } from "./Auth.typings";
+import {ViewProps} from './Auth.typings'
 
 const View: React.FunctionComponent<ViewProps> = ({
-  onChangeAuth,
+  onAuthChange,
   onChangeEmail,
   onChangePassword,
   onChangeConfirmPassowrd,
@@ -17,68 +17,73 @@ const View: React.FunctionComponent<ViewProps> = ({
   password,
   confirmPassword,
   isLogin,
+  modalClassName,
 }) => {
   return (
-    <React.Fragment>
+    <>
       <Helmet title="Auth" />
       <div className="Auth">
-        <Modal
-          className={[
-            isLogin ? "Modal--visibilityX" : "Modal--visibilityY",
-          ].join(" ")}
-        >
+        <Modal className={modalClassName}>
           <div className="Auth__button-box">
             <Button
-              onClick={onChangeAuth}
+              onClick={() => onAuthChange(true)}
+              disabled={modalClassName === 'Modal--hideX' || false}
               className={[
-                "Button__auth",
-                isLogin ? "" : "Button__auth--inactive",
-              ].join(" ")}
+                'Button__auth',
+                isLogin ? '' : 'Button__auth--inactive',
+              ].join(' ')}
             >
               Sign in
             </Button>
             <Button
-              onClick={onChangeAuth}
+              onClick={() => onAuthChange(false)}
+              disabled={modalClassName === 'Modal--hideY' || false}
               className={[
-                "Button__auth",
-                isLogin ? "Button__auth--inactive" : "",
-              ].join(" ")}
+                'Button__auth',
+                isLogin ? 'Button__auth--inactive' : '',
+              ].join(' ')}
             >
               Sign up
             </Button>
           </div>
-            <Form onSubmit={submitHandler}>
-              <Input type="text" text="Email" onChange={onChangeEmail} value={email}></Input>
-              <Label text="Email"></Label>
-              <Input
-                type="password"
-                text="Password"
-                onChange={onChangePassword}
-                value={password}
-              ></Input>
-              <Label text="Password"></Label>
-              {!isLogin ? <React.Fragment>
+          <Form onSubmit={submitHandler}>
+            <Input
+              type="text"
+              text="Email"
+              onChange={onChangeEmail}
+              value={email}
+            />
+            <Label text="Email" />
+            <Input
+              type="password"
+              text="Password"
+              onChange={onChangePassword}
+              value={password}
+            />
+            <Label text="Password" />
+            {(modalClassName === 'Modal--visibilityY' ||
+              modalClassName === 'Modal--hideY') && (
+              <>
                 <Input
                   type="password"
                   text="Confirm Password"
                   onChange={onChangeConfirmPassowrd}
                   value={confirmPassword}
-                ></Input>
-                <Label
-                  text="Confirm Password"
-                ></Label>
-              </React.Fragment> : null}
-              <Button>
-                <span className="Button__visible">Submit</span>
-                <span className="Button__invisible">
-                  {isLogin ? "Login" : "Register"}
-                </span>
-              </Button>
-            </Form>
+                />
+                <Label text="Confirm Password" />
+              </>
+            )}
+            <Button>
+              <span className="Button__visible">Submit</span>
+              <span className="Button__invisible">
+                {isLogin ? 'Login' : 'Register'}
+              </span>
+            </Button>
+          </Form>
         </Modal>
       </div>
-    </React.Fragment>
-  );
-};
+    </>
+  )
+}
 
-export { View };
+export {View}

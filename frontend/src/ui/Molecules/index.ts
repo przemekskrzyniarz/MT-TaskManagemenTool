@@ -1,2 +1,2 @@
-export * from "./NavigationItems";
-export * from "./Modal";
+export * from './NavigationItems'
+export * from './Modal'

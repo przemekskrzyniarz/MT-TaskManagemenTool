@@ -10,43 +10,40 @@
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: antiquewhite;
-  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   transition: transform 300ms cubic-bezier(0.06, 0.37, 0.42, 0.99) 0s,
     background 300ms cubic-bezier(0.06, 0.37, 0.42, 0.99) 0s,
     padding 300ms cubic-bezier(0.06, 0.37, 0.42, 0.99) 0s;
   &__logo {
-      width: 4.5rem;
-      height: 4.5rem;
-      background-size: cover;
-      background-image: url('../../images/logo.png');
-      transition: all .2s;
-      &.active,
-      &:hover,
-      &:active {
-        animation: pulsate 1s infinite;
-      }
-      
-
+    width: 4.5rem;
+    height: 4.5rem;
+    background-size: cover;
+    background-image: url('../../images/logo.png');
+    transition: all 0.2s;
+    &.active,
+    &:hover,
+    &:active {
+      animation: pulsate 1s infinite;
+    }
   }
 
   &--hidden {
     transform: translateY(-100%);
   }
-  
+
   @keyframes pulsate {
     0% {
-        transform: scale(1);
-        box-shadow: none;
+      transform: scale(1);
+      box-shadow: none;
     }
 
     50% {
-        transform: scale(1.05);
+      transform: scale(1.05);
     }
 
     100% {
-        transform: scale(1);
-        box-shadow: none;
+      transform: scale(1);
+      box-shadow: none;
     }
+  }
 }
-}
-

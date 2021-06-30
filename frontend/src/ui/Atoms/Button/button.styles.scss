@@ -10,16 +10,16 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s;
-  
+
   &:hover {
     transform: translateY(-3px);
   }
-  
+
   & > * {
     display: inline-block;
     height: 100%;
     width: 100%;
-    transition: all .6s;
+    transition: all 0.6s;
   }
 
   &:hover {
@@ -37,14 +37,14 @@
   }
 
   &:hover {
-    #{ $self }__visible{
-    transform: translateY(100%);
+    #{ $self }__visible {
+      transform: translateY(100%);
     }
   }
 
   &:hover {
-    #{ $self }__invisible{
-    top: 0;
+    #{ $self }__invisible {
+      top: 28%;
     }
   }
 
@@ -58,7 +58,7 @@
         color: black;
       }
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 2.4rem;
         left: 0;

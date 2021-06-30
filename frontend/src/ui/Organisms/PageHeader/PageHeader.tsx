@@ -1,56 +1,56 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { NavigationItems } from "./../../Molecules";
+import {NavigationItems} from './../../Molecules'
 
-import { getToken } from "../../../redux/authReducer/selectors";
+import {getToken} from '../../../redux/authReducer/selectors'
 
-import { ROUTES } from "../../../config/routes";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import {ROUTES} from '../../../config/routes'
+import {NavLink} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 export interface Props {
-  className?: string;
-  hidden?: boolean;
-  scrolled?: boolean;
+  className?: string
+  hidden?: boolean
+  scrolled?: boolean
 }
 
 const PageHeader = (props: Props) => {
-  const token = useSelector(getToken);
-  console.log(token);
-  let items;
-  if (token === "") {
+  const token = useSelector(getToken)
+  console.log(token)
+  let items
+  if (token === '') {
     items = [
       {
-        children: "Login",
+        children: 'Login',
         href: `${ROUTES.AUTH}`,
       },
-    ];
+    ]
   } else {
     items = [
       {
-        children: "Logout",
+        children: 'Logout',
         href: `${ROUTES.LOGOUT}`,
       },
-    ];
+    ]
   }
 
   return (
     <header
       className={[
-        "pageHeader",
-        props.hidden ? "pageHeader--hidden" : "",
+        'pageHeader',
+        props.hidden ? 'pageHeader--hidden' : '',
         props.className,
-      ].join(" ")}
+      ].join(' ')}
     >
       <NavLink
         className="pageHeader__logo"
         to={ROUTES.HOME}
         exact={true}
         activeClassName="active"
-      ></NavLink>
+      />
       <NavigationItems items={items} />
     </header>
-  );
-};
+  )
+}
 
-export { PageHeader };
+export {PageHeader}

@@ -5,7 +5,7 @@
   justify-content: center;
   height: calc(100vh - 6rem);
   background-image: url(../../images/Home2-100.jpg);
-  opacity: .85;
+  opacity: 0.85;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -19,12 +19,12 @@
   }
 
   &__text {
-    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, 0.8);
     align-self: center;
-    
+
     & > * {
       font-size: 2rem;
-      font-family: "Josefin Sans", sans-serif;
+      font-family: 'Josefin Sans', sans-serif;
       text-transform: uppercase;
       font-weight: 400;
       padding: 2rem;

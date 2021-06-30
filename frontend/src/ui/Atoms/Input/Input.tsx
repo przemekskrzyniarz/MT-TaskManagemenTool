@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { BaseProps as Props } from "./Input.types";
+import {BaseProps as Props} from './Input.types'
 
 const Input: React.FunctionComponent<Props> = ({
   children,
@@ -12,7 +12,7 @@ const Input: React.FunctionComponent<Props> = ({
 }) => (
   <input
     type={type}
-    className={["Input", className].join(" ")}
+    className={['Input', className].join(' ')}
     placeholder={text}
     id={text}
     onChange={onChange}
@@ -21,6 +21,6 @@ const Input: React.FunctionComponent<Props> = ({
   >
     {children}
   </input>
-);
+)
 
-export { Input };
+export {Input}

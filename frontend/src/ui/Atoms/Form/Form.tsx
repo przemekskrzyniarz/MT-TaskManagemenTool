@@ -1,9 +1,15 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { BaseProps as Props } from "./Form.types";
+import {BaseProps as Props} from './Form.types'
 
-const Form: React.FunctionComponent<Props> = ({className, children, onSubmit}) => (
-  <form onSubmit={onSubmit} className={["Form", className].join(" ")}>{children}</form>
-);
+const Form: React.FunctionComponent<Props> = ({
+  className,
+  children,
+  onSubmit,
+}) => (
+  <form onSubmit={onSubmit} className={['Form', className].join(' ')}>
+    {children}
+  </form>
+)
 
-export { Form };
+export {Form}

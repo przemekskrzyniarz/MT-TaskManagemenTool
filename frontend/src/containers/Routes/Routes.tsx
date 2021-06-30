@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { Switch, Route } from "react-router-dom";
+import {Switch, Route} from 'react-router-dom'
 
-import { index, auth, logout } from "../../config/routes";
+import {index, auth, logout} from '../../config/routes'
 
 const Routes: React.FunctionComponent = () => (
   <main>
@@ -12,6 +12,6 @@ const Routes: React.FunctionComponent = () => (
       <Route {...logout} />
     </Switch>
   </main>
-);
+)
 
-export { Routes };
+export {Routes}
