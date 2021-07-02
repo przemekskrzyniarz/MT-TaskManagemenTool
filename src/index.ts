@@ -14,7 +14,7 @@ server.register(gql, {
 });
 
 server.register(require("fastify-static"), {
-  root: path.join(__dirname, "frontend/client/build"),
+  root: path.join(__dirname, "frontend/build"),
   prefix: "/app", // optional: default '/'
 });
 
