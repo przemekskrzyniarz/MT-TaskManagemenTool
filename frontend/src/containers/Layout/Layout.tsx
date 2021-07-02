@@ -1,47 +1,45 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { SCROLL_DIRECTION, useScroll } from "../../hooks";
-import { isClient } from "../../ui/helpers";
+import {SCROLL_DIRECTION, useScroll} from '../../hooks'
+import {isClient} from '../../ui/helpers'
 
-import { PageHeader } from "../../ui/Organisms";
+import {PageHeader} from '../../ui/Organisms'
 
 const maxScrolledPosition = () => {
-  let result = 0;
+  let result = 0
 
   if (isClient) {
     if (
-      window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches
+      window.matchMedia('(min-width: 768px) and (max-width: 1023px)').matches
     ) {
-      result = 160;
+      result = 160
     } else if (
-      window.matchMedia("(min-width: 1024px) and (max-width: 1199px)").matches
+      window.matchMedia('(min-width: 1024px) and (max-width: 1199px)').matches
     ) {
-      result = 300;
-    } else if (window.matchMedia("(min-width: 1200px)").matches) {
-      result = 200;
+      result = 300
+    } else if (window.matchMedia('(min-width: 1200px)').matches) {
+      result = 200
     } else {
-      result = 200;
+      result = 200
     }
   }
 
-  return result;
-};
+  return result
+}
 
-const Layout: React.FunctionComponent = (props) => {
-  const { scrollFromTop, scrollDirection } = useScroll();
-  
+const Layout: React.FunctionComponent = () => {
+  const {scrollFromTop, scrollDirection} = useScroll()
+
   return (
-    <React.Fragment>
-      <PageHeader
-        hidden={
-          isClient &&
-          scrollDirection === SCROLL_DIRECTION.BOTTOM &&
-          scrollFromTop >= maxScrolledPosition()
-        }
-        scrolled={scrollFromTop > maxScrolledPosition()}
-      />
-    </React.Fragment>
-  );
-};
+    <PageHeader
+      hidden={
+        isClient &&
+        scrollDirection === SCROLL_DIRECTION.BOTTOM &&
+        scrollFromTop >= maxScrolledPosition()
+      }
+      scrolled={scrollFromTop > maxScrolledPosition()}
+    />
+  )
+}
 
-export { Layout };
+export {Layout}

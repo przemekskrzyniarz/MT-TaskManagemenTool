@@ -1,22 +1,77 @@
 .Button {
+  $self: &;
   font-size: 1.6rem;
   display: inline-block;
   border: none;
   padding: 3px;
   background: none;
   outline: none;
-  color: rgb(0, 0, 0);
-  transition: all 0.3s;
-  &--auth {
-    &:hover {
-     // background: white;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  & > * {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    transition: all 0.6s;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  &__visible {
+    padding: 1rem 0;
+  }
+
+  &__invisible {
+    position: absolute;
+    left: 0;
+    top: -100%;
+  }
+
+  &:hover {
+    #{ $self }__visible {
+      transform: translateY(100%);
     }
   }
-  &--inactive {
-    color: grey;
-    &:hover {
-      transform: translateY(-3px);
-      color: black;
+
+  &:hover {
+    #{ $self }__invisible {
+      top: 28%;
+    }
+  }
+
+  &__auth {
+    border-bottom: 1px solid $color-black;
+    color: rgb(0, 0, 0);
+    &--inactive {
+      border-bottom: none;
+      color: grey;
+      &:hover {
+        color: black;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2.4rem;
+        left: 0;
+        height: 1px;
+        width: 0%;
+        background-color: $color-black;
+        transform: scaleY(0);
+        transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s;
+      }
+      &:hover::before {
+        transform: scaleY(1);
+        width: 100%;
+      }
     }
   }
 }

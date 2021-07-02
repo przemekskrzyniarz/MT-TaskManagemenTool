@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 const Home: React.FunctionComponent = () => (
   <div className="Home">
@@ -20,6 +20,6 @@ const Home: React.FunctionComponent = () => (
       </div>
     </div>
   </div>
-);
+)
 
-export { Home };
+export {Home}

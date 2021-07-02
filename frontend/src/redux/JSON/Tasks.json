@@ -1,0 +1,222 @@
+[{
+  "_id": {
+    "$oid": "5f48d41a13ebc420a4a07059"
+  },
+  "title": "Słówka Angielski",
+  "description": "Kolokwium nr 1",
+  "type": "Do Zrobienia",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-09-25T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d42113ebc420a4a0705a"
+  },
+  "title": "Wykłady",
+  "description": "Treść wykładów na 7 semestrze",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-09-18T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d42b13ebc420a4a0705b"
+  },
+  "title": "Praktyki Terenowe",
+  "description": "Szkice oraz dzienniki",
+  "type": "Do Zrobienia",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:53:47.121Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d43213ebc420a4a0705c"
+  },
+  "title": "Zaliczenia i egzaminy",
+  "description": "Warunki zaliczenia przedmiotów i egzaminów na 7 semestrze",
+  "type": "Zakończone",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-10-03T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d43b13ebc420a4a0705d"
+  },
+  "title": "Projekt - SK",
+  "description": "Implementacja algorytmu",
+  "type": "Do Zrobienia",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:03.565Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d44313ebc420a4a0705e"
+  },
+  "title": "Laboratorium - C++",
+  "description": "Kolokwium",
+  "type": "Do Zrobienia",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:11.184Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d44b13ebc420a4a0705f"
+  },
+  "title": "Wykład SOnB",
+  "description": "Nauka na egzamin",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:19.451Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d45513ebc420a4a07060"
+  },
+  "title": "Praca Magisterska",
+  "description": "Streszczenie",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:29.642Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d46313ebc420a4a07061"
+  },
+  "title": "Wykład - SK",
+  "description": "Uzupełnienie bibliografii",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:43.172Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d46913ebc420a4a07062"
+  },
+  "title": "Projekt PSR",
+  "description": "Obrona projektu",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ece469aeb53961818f9dd47"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:49.205Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d46e13ebc420a4a07063"
+  },
+  "title": "Stypendium",
+  "description": "Złożyć papiery",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:54:54.313Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d47813ebc420a4a07064"
+  },
+  "title": "Opłata za Akademik",
+  "description": "",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:55:04.379Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f48d48313ebc420a4a07065"
+  },
+  "title": "Nauka pytań na obrone",
+  "description": "Pytania 10-15",
+  "type": "W Trakcie",
+  "implementer": {
+    "$oid": "5ecd50dbf9e8581714656ad5"
+  },
+  "taskFor": {
+    "$oid": "5f3d1011baa3ad1e94584aa9"
+  },
+  "deadline": {
+    "$date": "2020-08-28T09:55:15.459Z"
+  },
+  "__v": 0
+}]

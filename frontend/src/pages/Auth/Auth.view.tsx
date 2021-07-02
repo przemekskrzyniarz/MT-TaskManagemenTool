@@ -1,63 +1,89 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { Helmet } from "react-helmet";
+import {Helmet} from 'react-helmet'
 
-import { Form, Input, Label, Button } from "../../ui/Atoms";
-import { ViewProps } from "./Auth.typings";
+import {Form, Input, Label, Button} from '../../ui/Atoms'
+import {Modal} from '../../ui/Molecules'
+
+import {ViewProps} from './Auth.typings'
 
 const View: React.FunctionComponent<ViewProps> = ({
-  onChangeAuth,
+  onAuthChange,
+  onChangeEmail,
+  onChangePassword,
+  onChangeConfirmPassowrd,
+  submitHandler,
+  email,
+  password,
+  confirmPassword,
   isLogin,
+  modalClassName,
 }) => {
   return (
-    <React.Fragment>
+    <>
       <Helmet title="Auth" />
       <div className="Auth">
-        <div className={["Auth__content", isLogin ? "Auth__content--active" : "Auth__content--inactive"].join(" ")} >
+        <Modal className={modalClassName}>
           <div className="Auth__button-box">
             <Button
-              onClick={onChangeAuth}
+              onClick={() => onAuthChange(true)}
+              disabled={modalClassName === 'Modal--hideX' || false}
               className={[
-                "Button--auth",
-                isLogin ? "" : "Button--inactive",
-              ].join(" ")}
+                'Button__auth',
+                isLogin ? '' : 'Button__auth--inactive',
+              ].join(' ')}
             >
               Sign in
             </Button>
             <Button
-              onClick={onChangeAuth}
+              onClick={() => onAuthChange(false)}
+              disabled={modalClassName === 'Modal--hideY' || false}
               className={[
-                "Button--auth",
-                isLogin ? "Button--inactive" : "",
-              ].join(" ")}
+                'Button__auth',
+                isLogin ? 'Button__auth--inactive' : '',
+              ].join(' ')}
             >
               Sign up
             </Button>
           </div>
-          <div className="Auth__form-box">
-            <Form>
-              <Input type="text" text="Email"></Input>
-              <Label text="Email"></Label>
-              <Input type="password" text="Password"></Input>
-              <Label text="Password"></Label>
-                <React.Fragment>
-                  <Input
-                    className={[isLogin ? "Input--inactive" : ""].join(" ")}
-                    type="password"
-                    text="Confirm Password"
-                  ></Input>
-                  <Label
-                    className={[isLogin ? "Label--inactive" : ""].join(" ")}
-                    text="Confirm Password"
-                  ></Label>
-                </React.Fragment>
-              <Button>Submit</Button>
-            </Form>
-          </div>
-        </div>
+          <Form onSubmit={submitHandler}>
+            <Input
+              type="text"
+              text="Email"
+              onChange={onChangeEmail}
+              value={email}
+            />
+            <Label text="Email" />
+            <Input
+              type="password"
+              text="Password"
+              onChange={onChangePassword}
+              value={password}
+            />
+            <Label text="Password" />
+            {(modalClassName === 'Modal--visibilityY' ||
+              modalClassName === 'Modal--hideY') && (
+              <>
+                <Input
+                  type="password"
+                  text="Confirm Password"
+                  onChange={onChangeConfirmPassowrd}
+                  value={confirmPassword}
+                />
+                <Label text="Confirm Password" />
+              </>
+            )}
+            <Button>
+              <span className="Button__visible">Submit</span>
+              <span className="Button__invisible">
+                {isLogin ? 'Login' : 'Register'}
+              </span>
+            </Button>
+          </Form>
+        </Modal>
       </div>
-    </React.Fragment>
-  );
-};
+    </>
+  )
+}
 
-export { View };
+export {View}
