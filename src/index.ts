@@ -8,14 +8,13 @@ import gql from "fastify-gql";
 import schema from "./schema";
 
 // Register Fastify GraphQL
-server.register(gql, {
-  schema,
-  graphiql: true,
-});
+// server.register(gql, {
+//   schema,
+//   graphiql: true,
+// });
 
 server.register(require("fastify-static"), {
   root: path.join(__dirname, "../frontend/build"),
-  prefix: "/app", // optional: default '/'
 });
 
 const port = process.env.PORT || 5000;
