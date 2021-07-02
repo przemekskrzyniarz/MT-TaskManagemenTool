@@ -1,6 +1,6 @@
 // Require the fastify framework and instantiate it
 import server from "./server";
-
+const path = require("path");
 // Import external dependancies
 import gql from "fastify-gql";
 
@@ -11,6 +11,11 @@ import schema from "./schema";
 server.register(gql, {
   schema,
   graphiql: true,
+});
+
+server.register(require("fastify-static"), {
+  root: path.join(__dirname, "frontend/client/build"),
+  prefix: "/app", // optional: default '/'
 });
 
 const port = process.env.PORT || 5000;

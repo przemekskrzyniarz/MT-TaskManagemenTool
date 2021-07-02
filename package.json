@@ -8,6 +8,7 @@
     "boom": "^7.3.0",
     "fastify": "^3.14.0",
     "fastify-gql": "^5.8.2",
+    "fastify-static": "^4.2.2",
     "fastify-swagger": "^4.4.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.0",
