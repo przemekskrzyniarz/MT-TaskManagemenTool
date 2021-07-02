@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@loadable/component": "^5.14.1",
     "@storybook/addon-knobs": "^6.1.21",
     "@types/node-sass": "^4.11.1",
     "node-sass": "^5.0.0",
@@ -21,6 +20,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@loadable/component": "^5.15.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
