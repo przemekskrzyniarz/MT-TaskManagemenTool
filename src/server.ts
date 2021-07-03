@@ -8,7 +8,8 @@ import { connect } from "mongoose";
 
 // Connect to DB
 connect(
-  "mongodb+srv://TheDycker:nSelmRNedh3DDKCJ@cluster0-adnzn.mongodb.net/Master-Thesis?retryWrites=true&w=majority"
+  "mongodb+srv://TheDycker:nSelmRNedh3DDKCJ@cluster0-adnzn.mongodb.net/Master-Thesis?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
 )
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
