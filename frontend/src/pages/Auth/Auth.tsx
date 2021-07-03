@@ -1,7 +1,7 @@
 import {useMutation} from '@apollo/client'
 import React, {useState, useEffect, FC} from 'react'
 import {useHistory} from 'react-router'
-import {userInitialValue, userVar} from '../../apollo/cache'
+import {userInitialValue, userVar} from '../../apollo/reactivities/user'
 import {LOGIN} from '../../apollo/mutations/login'
 import {useDidMount} from '../../hooks'
 

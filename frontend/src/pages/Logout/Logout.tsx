@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react'
 import {Redirect} from 'react-router-dom'
-import {userInitialValue, userVar} from '../../apollo/cache'
+import {userInitialValue, userVar} from '../../apollo/reactivities/user'
 
 export const Logout: FunctionComponent<{}> = () => {
   React.useEffect(() => {
