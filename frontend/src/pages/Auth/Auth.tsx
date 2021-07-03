@@ -21,7 +21,7 @@ const Auth: FC = () => {
       userVar(loginUser)
       history.push('/')
     },
-    onError: ({message}) => {
+    onError: () => {
       userVar(userInitialValue)
     },
   })
