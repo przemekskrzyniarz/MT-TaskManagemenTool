@@ -45,7 +45,9 @@ const Auth: FC = () => {
   }, [isLogin])
 
   useEffect(() => {
-    setErrorMessage('')
+    if (errorMessage) {
+      setErrorMessage(null)
+    }
   }, [password, email])
 
   useEffect(() => {
