@@ -11,6 +11,10 @@ server.register(require("fastify-static"), {
   root: path.join(__dirname, "../frontend/build"),
 });
 
+server.register(require("fastify-cors"), {
+  // put your options here
+});
+
 // Register Fastify GraphQL
 server.register(gql, {
   schema,

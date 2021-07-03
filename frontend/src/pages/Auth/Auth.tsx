@@ -1,30 +1,40 @@
-import React from 'react'
-import {useDispatch} from 'react-redux'
+import {useMutation} from '@apollo/client'
+import React, {useState, useEffect, FC} from 'react'
 import {useHistory} from 'react-router'
+import {userVar} from '../../apollo/cache'
+import {LOGIN} from '../../apollo/mutations/login'
 import {useDidMount} from '../../hooks'
-
-import {login} from '../../redux/authReducer/actions'
 
 import {View} from './Auth.view'
 
-const Auth: React.FunctionComponent = () => {
-  const [isLogin, setIsLogin] = React.useState(true)
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [confirmPassword, setConfirmPassword] = React.useState('')
-  const [modalClassName, setModalClassName] =
-    React.useState('Modal--visibilityX')
+const Auth: FC = () => {
+  const [isLogin, setIsLogin] = useState(true)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [modalClassName, setModalClassName] = useState('Modal--visibilityX')
   const history = useHistory()
-  const dispatch = useDispatch()
   const didMount = useDidMount()
+  const [login] = useMutation(LOGIN, {
+    variables: {email: email, password: password},
+    onCompleted: ({loginUser}) => {
+      sessionStorage.setItem('token', loginUser.token)
+      userVar(loginUser)
+      history.push('/')
+    },
+    onError: ({message}) => {
+      console.log(message)
+      sessionStorage.removeItem('token')
+    },
+  })
 
-  React.useEffect(() => {
+  useEffect(() => {
     setEmail('')
     setPassword('')
     setConfirmPassword('')
   }, [isLogin])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (didMount) {
       if (!isLogin) {
         setModalClassName('Modal--hideX')
@@ -38,18 +48,17 @@ const Auth: React.FunctionComponent = () => {
         }, 1000)
       }
     }
-    // eslint-disable-next-line
   }, [isLogin])
 
-  const submitHandler = (event: any) => {
+  const submitHandler = async (event: any) => {
     event.preventDefault()
     if (isLogin) {
       if (email.trim().length === 0 || password.trim().length === 0) {
         console.log('error')
         return
+      } else {
+        login()
       }
-      dispatch(login)
-      history.push('/')
     } else {
       return
     }
@@ -57,7 +66,6 @@ const Auth: React.FunctionComponent = () => {
 
   const handleAuthChange = (auth: boolean) => {
     if (isLogin !== auth) {
-      //console.log(auth);
       setIsLogin(auth)
     }
   }

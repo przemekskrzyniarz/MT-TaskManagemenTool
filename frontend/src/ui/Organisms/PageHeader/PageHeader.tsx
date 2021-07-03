@@ -2,11 +2,10 @@ import * as React from 'react'
 
 import {NavigationItems} from './../../Molecules'
 
-import {getToken} from '../../../redux/authReducer/selectors'
-
 import {ROUTES} from '../../../config/routes'
 import {NavLink} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useQuery} from '@apollo/client'
+import {GET_USER} from '../../../apollo/queries/getUser'
 
 export interface Props {
   className?: string
@@ -15,10 +14,9 @@ export interface Props {
 }
 
 const PageHeader = (props: Props) => {
-  const token = useSelector(getToken)
-  console.log(token)
   let items
-  if (token === '') {
+  const {data} = useQuery(GET_USER)
+  if (!data?.user?.token) {
     items = [
       {
         children: 'Login',
