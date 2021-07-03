@@ -11,7 +11,7 @@ connect(
   "mongodb+srv://TheDycker:nSelmRNedh3DDKCJ@cluster0-adnzn.mongodb.net/Master-Thesis?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
-  .then(() => console.log("MongoDB connected..."))
+  .then(async () => await console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
 
 export default server;
