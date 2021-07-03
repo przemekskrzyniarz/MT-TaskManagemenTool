@@ -1,7 +1,7 @@
 import {useMutation} from '@apollo/client'
 import React, {useState, useEffect, FC} from 'react'
 import {useHistory} from 'react-router'
-import {userVar} from '../../apollo/cache'
+import {userInitialValue, userVar} from '../../apollo/cache'
 import {LOGIN} from '../../apollo/mutations/login'
 import {useDidMount} from '../../hooks'
 
@@ -18,13 +18,11 @@ const Auth: FC = () => {
   const [login] = useMutation(LOGIN, {
     variables: {email: email, password: password},
     onCompleted: ({loginUser}) => {
-      sessionStorage.setItem('token', loginUser.token)
       userVar(loginUser)
       history.push('/')
     },
     onError: ({message}) => {
-      console.log(message)
-      sessionStorage.removeItem('token')
+      userVar(userInitialValue)
     },
   })
 
