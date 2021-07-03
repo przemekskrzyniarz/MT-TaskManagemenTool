@@ -8,10 +8,11 @@ import {useDidMount} from '../../hooks'
 import {View} from './Auth.view'
 
 const Auth: FC = () => {
-  const [isLogin, setIsLogin] = useState(true)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [isLogin, setIsLogin] = useState<boolean>(true)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [modalClassName, setModalClassName] = useState('Modal--visibilityX')
   const history = useHistory()
   const didMount = useDidMount()
@@ -19,10 +20,16 @@ const Auth: FC = () => {
     variables: {email: email, password: password},
     onCompleted: ({loginUser}) => {
       userVar(loginUser)
+      setErrorMessage(null)
       history.push('/')
     },
-    onError: () => {
+    onError: ({message}) => {
       userVar(userInitialValue)
+      setEmail('')
+      setPassword('')
+      setTimeout(() => {
+        setErrorMessage(message)
+      }, 600)
     },
   })
 
@@ -48,11 +55,18 @@ const Auth: FC = () => {
     }
   }, [isLogin])
 
+  useEffect(() => {
+    if (errorMessage) {
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 2000)
+    }
+  }, [errorMessage])
+
   const submitHandler = async (event: any) => {
     event.preventDefault()
     if (isLogin) {
       if (email.trim().length === 0 || password.trim().length === 0) {
-        console.log('error')
         return
       } else {
         login()
@@ -65,6 +79,7 @@ const Auth: FC = () => {
   const handleAuthChange = (auth: boolean) => {
     if (isLogin !== auth) {
       setIsLogin(auth)
+      setErrorMessage('')
     }
   }
 
@@ -80,6 +95,7 @@ const Auth: FC = () => {
       onChangePassword={event => setPassword(event.target.value)}
       onChangeConfirmPassowrd={event => setConfirmPassword(event.target.value)}
       submitHandler={(event: any) => submitHandler(event)}
+      errorMessage={errorMessage}
     />
   )
 }

@@ -9,4 +9,5 @@ export interface ViewProps {
   onChangePassword: (event: any) => void
   onChangeConfirmPassowrd: (event: any) => void
   submitHandler: (event: any) => void
+  errorMessage: string | null
 }
