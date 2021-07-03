@@ -13,7 +13,8 @@ const Auth: FC = () => {
   const [password, setPassword] = useState<string>('')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [confirmPassword, setConfirmPassword] = useState<string>('')
-  const [modalClassName, setModalClassName] = useState('Modal--visibilityX')
+  const [modalClassName, setModalClassName] =
+    useState<string>('Modal--visibilityX')
   const history = useHistory()
   const didMount = useDidMount()
   const [login] = useMutation(LOGIN, {
@@ -25,8 +26,12 @@ const Auth: FC = () => {
     },
     onError: ({message}) => {
       userVar(userInitialValue)
-      setEmail('')
-      setPassword('')
+      if (message === 'User does not exist!') {
+        setEmail('')
+        setPassword('')
+      } else {
+        setPassword('')
+      }
       setTimeout(() => {
         setErrorMessage(message)
       }, 600)
@@ -54,14 +59,6 @@ const Auth: FC = () => {
       }
     }
   }, [isLogin])
-
-  useEffect(() => {
-    if (errorMessage) {
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 2000)
-    }
-  }, [errorMessage])
 
   const submitHandler = async (event: any) => {
     event.preventDefault()
