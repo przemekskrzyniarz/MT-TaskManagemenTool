@@ -45,6 +45,10 @@ const Auth: FC = () => {
   }, [isLogin])
 
   useEffect(() => {
+    setErrorMessage('')
+  }, [password, email])
+
+  useEffect(() => {
     if (didMount) {
       if (!isLogin) {
         setModalClassName('Modal--hideX')
