@@ -2,15 +2,15 @@
 import fastify from "fastify";
 
 const server = fastify({ logger: true });
-require("dotenv").config();
-
-const uri = process.env.MONGODB_URI;
 
 // Require external modules
 import { connect } from "mongoose";
 
 // Connect to DB
-connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+connect(
+  "mongodb+srv://TheDycker:nSelmRNedh3DDKCJ@cluster0-adnzn.mongodb.net/Master-Thesis?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+)
   .then(async () => await console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
 
