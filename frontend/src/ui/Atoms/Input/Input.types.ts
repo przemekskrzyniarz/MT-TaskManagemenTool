@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import {ReactNode} from 'react'
 
 export interface BaseProps {
-  children?: ReactNode;
-  invert?: boolean;
-  className?: string;
-  text?: string;
-  type?: string;
-  value?: string;
-  onChange?: (event: any) => void;
+  children?: ReactNode | undefined
+  invert?: boolean | undefined
+  className?: string | undefined
+  text?: string | undefined
+  type?: string | undefined
+  value?: string | number | readonly string[] | undefined
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
