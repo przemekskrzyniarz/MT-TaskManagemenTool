@@ -7,6 +7,7 @@ import {useDidMount} from '../../hooks'
 
 import {View} from './Auth.view'
 import {User} from '../../apollo/models/User'
+import {passwordValidate} from '../../utils/validation/validation'
 
 const Auth: FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true)
@@ -23,12 +24,12 @@ const Auth: FC = () => {
     onCompleted: ({loginUser}) => onCompleted(loginUser),
     onError: ({message}) => onErrorLogin(message),
   })
-
   const [register] = useMutation(REGISTER, {
     variables: {
       email: email,
       password: password,
     },
+    // eslint-disable-next-line
     onCompleted: ({register}) => onCompleted(register),
     onError: ({message}) => onErrorRegister(message),
   })
@@ -127,6 +128,20 @@ const Auth: FC = () => {
     }
   }
 
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+  }
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+    passwordValidate(event)
+  }
+  const handleChangeConfirmPassword = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setConfirmPassword(event.target.value)
+    passwordValidate(event)
+  }
+
   return (
     <View
       isLogin={isLogin}
@@ -135,9 +150,9 @@ const Auth: FC = () => {
       confirmPassword={confirmPassword}
       modalClassName={modalClassName}
       onAuthChange={handleAuthChange}
-      onChangeEmail={event => setEmail(event.target.value)}
-      onChangePassword={event => setPassword(event.target.value)}
-      onChangeConfirmPassowrd={event => setConfirmPassword(event.target.value)}
+      onChangeEmail={handleChangeEmail}
+      onChangePassword={handleChangePassword}
+      onChangeConfirmPassowrd={handleChangeConfirmPassword}
       submitHandler={(event: any) => submitHandler(event)}
       errorMessage={errorMessage}
     />

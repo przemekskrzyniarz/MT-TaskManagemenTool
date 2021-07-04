@@ -49,7 +49,7 @@ const View: React.FunctionComponent<ViewProps> = ({
           </div>
           <Form onSubmit={submitHandler}>
             <Input
-              type="text"
+              type="email"
               text="Email"
               onChange={onChangeEmail}
               value={email}
