@@ -2,10 +2,11 @@ import {useMutation} from '@apollo/client'
 import React, {useState, useEffect, FC} from 'react'
 import {useHistory} from 'react-router'
 import {userInitialValue, userVar} from '../../apollo/reactivities/user'
-import {LOGIN} from '../../apollo/mutations/login'
+import {LOGIN, REGISTER} from '../../apollo/mutations'
 import {useDidMount} from '../../hooks'
 
 import {View} from './Auth.view'
+import {User} from '../../apollo/models/User'
 
 const Auth: FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true)
@@ -19,23 +20,17 @@ const Auth: FC = () => {
   const didMount = useDidMount()
   const [login] = useMutation(LOGIN, {
     variables: {email: email, password: password},
-    onCompleted: ({loginUser}) => {
-      userVar(loginUser)
-      setErrorMessage(null)
-      history.push('/')
+    onCompleted: ({loginUser}) => onCompleted(loginUser),
+    onError: ({message}) => onErrorLogin(message),
+  })
+
+  const [register] = useMutation(REGISTER, {
+    variables: {
+      email: email,
+      password: password,
     },
-    onError: ({message}) => {
-      userVar(userInitialValue)
-      if (message === 'User does not exist!') {
-        setEmail('')
-        setPassword('')
-      } else {
-        setPassword('')
-      }
-      setTimeout(() => {
-        setErrorMessage(message)
-      }, 600)
-    },
+    onCompleted: ({loginUser}) => onCompleted(loginUser),
+    onError: ({message}) => onErrorRegister(message),
   })
 
   useEffect(() => {
@@ -66,6 +61,37 @@ const Auth: FC = () => {
     }
   }, [isLogin])
 
+  const onCompleted = (loginUser: User) => {
+    userVar(loginUser)
+    setErrorMessage(null)
+    history.push('/')
+  }
+
+  const onErrorLogin = (message: string) => {
+    userVar(userInitialValue)
+    if (message === 'User does not exist.') {
+      setEmail('')
+      setPassword('')
+    } else {
+      setPassword('')
+    }
+    setTimeout(() => {
+      setErrorMessage(message)
+    }, 600)
+  }
+
+  const onErrorRegister = (message: string) => {
+    userVar(userInitialValue)
+    if (message === 'User exists already.') {
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+    }
+    setTimeout(() => {
+      setErrorMessage(message)
+    }, 600)
+  }
+
   const submitHandler = async (event: any) => {
     event.preventDefault()
     if (isLogin) {
@@ -75,7 +101,20 @@ const Auth: FC = () => {
         login()
       }
     } else {
-      return
+      if (
+        email.trim().length === 0 ||
+        password.trim().length === 0 ||
+        confirmPassword.trim().length === 0
+      ) {
+        return
+      } else if (password !== confirmPassword) {
+        setTimeout(() => {
+          setErrorMessage('Passwords do not match')
+        }, 600)
+        return
+      } else {
+        register()
+      }
     }
   }
 
