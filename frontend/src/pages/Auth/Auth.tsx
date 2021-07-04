@@ -29,7 +29,7 @@ const Auth: FC = () => {
       email: email,
       password: password,
     },
-    onCompleted: ({loginUser}) => onCompleted(loginUser),
+    onCompleted: ({register}) => onCompleted(register),
     onError: ({message}) => onErrorRegister(message),
   })
 
