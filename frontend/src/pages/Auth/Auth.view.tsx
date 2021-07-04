@@ -75,7 +75,14 @@ const View: React.FunctionComponent<ViewProps> = ({
               </>
             )}
             {errorMessage && (
-              <Label text={errorMessage} className="Label--error-message" />
+              <Label
+                text={errorMessage}
+                className={`Label__error-message ${
+                  isLogin
+                    ? 'Label__error-message--login'
+                    : 'Label__error-message--register'
+                }`}
+              />
             )}
             <Button>
               <span className="Button__visible">Submit</span>

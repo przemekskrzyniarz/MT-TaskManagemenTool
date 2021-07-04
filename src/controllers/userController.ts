@@ -23,7 +23,7 @@ export const createUser = async (req) => {
   try {
     const existingUser = await User.findOne({ email: req.email });
     if (existingUser) {
-      throw new Error("User exists already.");
+      throw new Error("This email already exists.");
     }
 
     const hashedPassword = await bcrypt.hash(req.password, 12);
@@ -58,7 +58,7 @@ export const createUser = async (req) => {
 export const login = async (req) => {
   const user = await User.findOne({ email: req.email });
   if (!user) {
-    throw new Error("User does not exist.");
+    throw new Error("This user does not exist.");
   }
   const isEqual = await bcrypt.compare(req.password, user.password);
   if (!isEqual) {

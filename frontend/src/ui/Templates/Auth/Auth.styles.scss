@@ -1,5 +1,5 @@
 .Auth {
-  background-image: url(../../images/Auth-big.jpg);
+  background-image: url(../../images/Auth-medium.jpg);
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -10,5 +10,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .Auth {
+    background-image: url(../../images/Auth-small.jpg);
   }
 }

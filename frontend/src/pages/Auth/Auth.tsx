@@ -108,6 +108,8 @@ const Auth: FC = () => {
       ) {
         return
       } else if (password !== confirmPassword) {
+        setPassword('')
+        setConfirmPassword('')
         setTimeout(() => {
           setErrorMessage('Passwords do not match')
         }, 600)

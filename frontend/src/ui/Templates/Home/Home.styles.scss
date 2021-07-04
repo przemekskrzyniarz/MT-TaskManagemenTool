@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 6rem);
-  background-image: url(../../images/Home2-100.jpg);
+  background-image: url(../../images/Home2-medium.jpg);
   opacity: 0.85;
   background-size: cover;
   background-attachment: fixed;
@@ -46,5 +46,11 @@
         transform: skewX(5deg);
       }
     }
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .Home {
+    background-image: url(../../images/Home2-small.jpg);
   }
 }
