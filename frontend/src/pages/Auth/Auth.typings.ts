@@ -1,12 +1,13 @@
 export interface ViewProps {
-  isLogin: boolean;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  modalClassName: string;
-  onAuthChange: (auth: boolean) => void;
-  onChangeEmail: (event: any) => void;
-  onChangePassword: (event: any) => void;
-  onChangeConfirmPassowrd: (event: any) => void;
-  submitHandler: (event: any) => void;
+  isLogin: boolean
+  email: string
+  password: string
+  confirmPassword: string
+  modalClassName: string
+  onAuthChange: (auth: boolean) => void
+  onChangeEmail: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangePassword: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeConfirmPassowrd: (event: React.ChangeEvent<HTMLInputElement>) => void
+  submitHandler: (event: any) => void
+  errorMessage: string | null
 }

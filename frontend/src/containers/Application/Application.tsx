@@ -1,18 +1,16 @@
 import React from 'react'
-
 import {Helmet} from 'react-helmet'
-import {Provider} from 'react-redux'
 import {HashRouter as Router} from 'react-router-dom'
+import {ApolloProvider} from '@apollo/client'
 
 import {ErrorBoundary} from '../../containers/ErrorBoundary'
 import {Layout} from '../Layout/Layout'
 import {Routes} from '../../containers/Routes'
-
-import store from '../../redux/store'
+import {client} from '../../apollo'
 
 const Application: React.FC = () => (
   <ErrorBoundary>
-    <Provider store={store}>
+    <ApolloProvider client={client}>
       <Router>
         <>
           <Helmet
@@ -23,7 +21,7 @@ const Application: React.FC = () => (
           <Routes />
         </>
       </Router>
-    </Provider>
+    </ApolloProvider>
   </ErrorBoundary>
 )
 

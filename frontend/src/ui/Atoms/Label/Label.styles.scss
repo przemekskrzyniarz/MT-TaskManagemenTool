@@ -5,4 +5,16 @@
   margin-top: 0.7rem;
   display: block;
   transition: all 0.6s;
+  &__error-message {
+    position: absolute;
+    margin: 0;
+    padding-left: 5rem;
+    color: red;
+    &--login {
+      transform: translateY(6.5rem);
+    }
+    &--register {
+      transform: translateY(10rem);
+    }
+  }
 }

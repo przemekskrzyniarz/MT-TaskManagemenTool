@@ -18,6 +18,7 @@ const View: React.FunctionComponent<ViewProps> = ({
   confirmPassword,
   isLogin,
   modalClassName,
+  errorMessage,
 }) => {
   return (
     <>
@@ -48,7 +49,7 @@ const View: React.FunctionComponent<ViewProps> = ({
           </div>
           <Form onSubmit={submitHandler}>
             <Input
-              type="text"
+              type="email"
               text="Email"
               onChange={onChangeEmail}
               value={email}
@@ -72,6 +73,16 @@ const View: React.FunctionComponent<ViewProps> = ({
                 />
                 <Label text="Confirm Password" />
               </>
+            )}
+            {errorMessage && (
+              <Label
+                text={errorMessage}
+                className={`Label__error-message ${
+                  isLogin
+                    ? 'Label__error-message--login'
+                    : 'Label__error-message--register'
+                }`}
+              />
             )}
             <Button>
               <span className="Button__visible">Submit</span>

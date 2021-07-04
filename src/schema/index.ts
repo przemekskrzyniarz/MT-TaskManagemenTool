@@ -12,12 +12,27 @@ import {
 // Import Controllers
 
 import { getSingleProject } from "../controllers/projectController";
-import { getSingleUser, createUser, login } from "../controllers/userController";
-import { getSingleTask, getImplementerTasks, getHeaderTasks } from "../controllers/taskController";
-import { getSingleHeader, getProjectHeaders } from "../controllers/headerController";
-import { getSingleProjectParticipant, getProjectParticipants, getProjectsParticipant, getProjecstUsersRole } from "../controllers/projectParticipantController";
+import {
+  getSingleUser,
+  createUser,
+  login,
+} from "../controllers/userController";
+import {
+  getSingleTask,
+  getImplementerTasks,
+  getHeaderTasks,
+} from "../controllers/taskController";
+import {
+  getSingleHeader,
+  getProjectHeaders,
+} from "../controllers/headerController";
+import {
+  getSingleProjectParticipant,
+  getProjectParticipants,
+  getProjectsParticipant,
+  getProjecstUsersRole,
+} from "../controllers/projectParticipantController";
 import { getSingleRoleProjectParticipant } from "../controllers/roleProjectParticipantController";
-
 
 // Define Object Types
 
@@ -132,7 +147,9 @@ const projectParticipantType = new GraphQLObjectType({
     roleProjectParticipant: {
       type: roleProjectParticipantType,
       async resolve(parent, args) {
-        return await getSingleRoleProjectParticipant({ id: parent.roleProjectParticipant_id });
+        return await getSingleRoleProjectParticipant({
+          id: parent.roleProjectParticipant_id,
+        });
       },
     },
   }),
@@ -151,7 +168,6 @@ const roleProjectParticipantType = new GraphQLObjectType({
     },
   }),
 });
-
 
 // Define Root Query
 const RootQuery = new GraphQLObjectType({
@@ -202,47 +218,46 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
-const loginType = new GraphQLObjectType({
-  name: "Login",
-  fields: () => ({
-    userId: { type: GraphQLID },
-    email: { type: GraphQLString },
-    token: { type: GraphQLString },
-    tokenExpiration: { type: GraphQLInt },
-  }),
-});
-
+const loginType = (type: string) =>
+  new GraphQLObjectType({
+    name: type,
+    fields: () => ({
+      userId: { type: GraphQLID },
+      email: { type: GraphQLString },
+      token: { type: GraphQLString },
+      tokenExpiration: { type: GraphQLInt },
+    }),
+  });
 
 // Define Mutations
 const Mutations = new GraphQLObjectType({
-	name: 'Mutations',
-	fields: {
-		register: {
-			type: GraphQLString,
-			args: {
-				email: { type: new GraphQLNonNull(GraphQLString) },
-				password: { type: new GraphQLNonNull(GraphQLString) }
-			},
-			async resolve(parent, args) {
-				return await createUser(args);
-			}
-		},
+  name: "Mutations",
+  fields: {
+    register: {
+      type: loginType("Register"),
+      args: {
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      async resolve(parent, args) {
+        return await createUser(args);
+      },
+    },
     loginUser: {
-			type: loginType,
-			args: {
-				email: { type: new GraphQLNonNull(GraphQLString) },
-				password: { type: new GraphQLNonNull(GraphQLString) }
-			},
-			async resolve(parent, args) {
-				return await login(args);
-			}
-		}
-	}
-})
+      type: loginType("Login"),
+      args: {
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      async resolve(parent, args) {
+        return await login(args);
+      },
+    },
+  },
+});
 
 // Export the schema
 export default new GraphQLSchema({
-	query: RootQuery,
-	mutation: Mutations
-})
-
+  query: RootQuery,
+  mutation: Mutations,
+});

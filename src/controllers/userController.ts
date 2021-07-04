@@ -1,8 +1,8 @@
 // External Dependancies
 import { boomify } from "boom";
 
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 // Get Data Models
 import User from "../models/User";
@@ -16,46 +16,65 @@ export const getSingleUser = async (req) => {
   } catch (err) {
     throw boomify(err);
   }
-}
+};
 
 // Add a new user
 export const createUser = async (req) => {
-    try {
-      const existingUser = await User.findOne({ email: req.email });
-      if (existingUser) {
-        throw new Error('User exists already.');
-      }
-      const hashedPassword = await bcrypt.hash(req.password, 12);
-
-      const user = new User({
-        email: req.email,
-        password: hashedPassword
-      });
-
-      const result = await user.save();
-
-      return "Successfully registered";
-    } catch (err) {
-      throw boomify(err);
+  try {
+    const existingUser = await User.findOne({ email: req.email });
+    if (existingUser) {
+      throw new Error("This email already exists.");
     }
-  }
 
-  // Login user
-  export const login = async (req) => {
-    const user = await User.findOne({ email: req.email });
-    if (!user) {
-      throw new Error('User does not exist!');
-    }
-    const isEqual = await bcrypt.compare(req.password, user.password);
-    if (!isEqual) {
-      throw new Error('Password is incorrect!');
-    }
+    const hashedPassword = await bcrypt.hash(req.password, 12);
+
+    const user = new User({
+      email: req.email,
+      password: hashedPassword,
+    });
+
+    const result = await user.save();
+
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      'somesupersecretkey',
+      { userId: result._id, email: result.email },
+      "somesupersecretkey",
       {
-        expiresIn: '1h'
+        expiresIn: "1h",
       }
     );
-    return { userId: user._id, token: token, tokenExpiration: 1, email: user.email };
+
+    return {
+      userId: result._id,
+      token: token,
+      tokenExpiration: 1,
+      email: result.email,
+    };
+  } catch (err) {
+    throw boomify(err);
   }
+};
+
+// Login user
+export const login = async (req) => {
+  const user = await User.findOne({ email: req.email });
+  if (!user) {
+    throw new Error("This user does not exist.");
+  }
+  const isEqual = await bcrypt.compare(req.password, user.password);
+  if (!isEqual) {
+    throw new Error("Password is incorrect.");
+  }
+  const token = jwt.sign(
+    { userId: user._id, email: user.email },
+    "somesupersecretkey",
+    {
+      expiresIn: "1h",
+    }
+  );
+  return {
+    userId: user._id,
+    token: token,
+    tokenExpiration: 1,
+    email: user.email,
+  };
+};
